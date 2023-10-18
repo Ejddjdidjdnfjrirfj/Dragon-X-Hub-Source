@@ -1,9 +1,65 @@
--- Made By DragonHub1 user in roblox
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Patskorn/GUI/main/Copy-SynapOver.lua"))()
 
-local DH = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
-local Player = game.Players.LocalPlayer
+local GUI = library:new("SynapOver","[ RightControl ]")
+local ScreeGui = Instance.new("ScreenGui")
+local Tframe = Instance.new("Frame")
+local Toggle = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+local UICorner_2 = Instance.new("UICorner")
 
-local Window = DH:Window("Dragon Hub", "Troll Vertion", Color3.fromRGB(255, 5, 5), Enum.KeyCode.LeftControl)
-local Main = Window:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
-Main:Label("User: "..Player.Name.."")
-Main:Label("Map: "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.."")
+--Properties: 
+
+ScreenGui.Parent = game.CoreGui
+
+Tframe.Name = "Tframe"
+Tframe.Parent = ScreenGui
+Tframe.BackgroundColor3 = Color3.new(1, 1, 1)
+Tframe.BackgroundTransparency = 1
+Tframe.Position = UDim2.new(0, 20, 0.5, -20)
+Tframe.Size = UDim2.new(0, 100, 0, 100)
+
+UICorner_2.Parent = Tframe
+ 
+Toggle.Name = "Open/Close"
+Toggle.Parent = Tframe
+Toggle.BackgroundColor3 = Color3.new(0.254902, 0.329412, 1)
+Toggle.BorderSizePixel = 0
+Toggle.Draggable = true
+Toggle.Position = UDim2.new(0, 20, 0.5, -20)
+Toggle.Size = UDim2.new(0, 99, 0, 50)
+Toggle.Font = Enum.Font.SourceSansBold
+Toggle.FontSize = Enum.FontSize.Size48
+Toggle.Text = "Toggle"
+Toggle.TextColor3 = Color3.new(0, 0, 0)
+Toggle.TextSize = 40
+Toggle.MouseButton1Click:Connect(function()
+game.CoreGui:FindFirstChild("UICopied").Enabled = not game.CoreGui:FindFirstChild("UICopied").Enabled
+end)
+
+UICorner.Parent = Toggle
+
+local Tab1 = GUI:Tap("Menu 1")
+local Tab2 = GUI:Tap("Menu 2")
+
+Tab1:Button("Button",function()
+    print("Button")
+end)
+
+Tab1:Label("Label")
+
+Tab1:Toggle("Toggle",nil,function(value)
+    print(value)
+end)
+
+Tab1:Line()
+
+Tab1:Dropdown("Dropdown",{"test1","test3"},function(t)
+    print(t)
+end)
+
+Tab1:TextBox("TextBox",function(value)
+    print(value)
+end)
+Tab1:Slider("Slider",1,100,5,function(value)
+    print(value)
+end)
